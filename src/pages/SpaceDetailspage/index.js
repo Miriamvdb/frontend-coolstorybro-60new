@@ -18,10 +18,16 @@ const SpaceDetailspage = () => {
 
   if (!spaceDetails) return <div>Loading..</div>;
 
+  // Sort over stories createdAt date
+  const sortedStories = [...spaceDetails.stories].sort(
+    (storyA, storyB) => new Date(storyA.createdAt) - new Date(storyB.createdAt)
+  );
+  console.log("Sorted?", sortedStories);
+
   return (
     <div className="container-spacedetailspage">
       <h1>Space details</h1>
-      {spaceDetails.stories.map((story, index) => {
+      {sortedStories.map((story, index) => {
         return (
           <div
             key={index}
