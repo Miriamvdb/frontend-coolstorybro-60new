@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { Navigation, MessageBox } from "./components";
 import { Login, SignUp } from "./pages";
 import Homepage from "./pages/Homepage";
+import SpaceDetailspage from "./pages/SpaceDetailspage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
       <MessageBox />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/spaces/:id" element={<SpaceDetailspage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
