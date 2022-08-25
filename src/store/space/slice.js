@@ -8,8 +8,13 @@ const initialState = {
 export const spaceSlice = createSlice({
   name: "space",
   initialState,
-  reducers: {},
+  reducers: {
+    setAllSpaces: (state, action) => {
+      console.log("From setAllSpaces reducer!", action);
+      state.allSpaces = action.payload;
+    },
+  },
 });
 
-export const {} = spaceSlice.actions;
+export const { setAllSpaces } = spaceSlice.actions;
 export default spaceSlice.reducer;
