@@ -22,7 +22,7 @@ function App() {
         <Route path="/spaces/:id" element={<SpaceDetailspage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/myspace" element={<MySpace />} />
+        <Route path="/myspace/:id" element={<MySpace />} />
       </Routes>
     </div>
   );

@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../store/user/selectors";
+import { selectToken, selectUser } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
-
   const dispatch = useDispatch();
 
   const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
+  const userId = user ? user.id : "";
+  // console.log("userId?", userId);
 
   return (
     <Nav>
@@ -24,7 +26,7 @@ export const Navigation = () => {
       <Menu open={open}>
         {token ? (
           <div>
-            <MenuLink href="/myspace">My Space</MenuLink>
+            <MenuLink href={`/myspace/${userId}`}>My Space</MenuLink>
             <MenuLink onClick={() => dispatch(logOut())}>Logout</MenuLink>
           </div>
         ) : (
