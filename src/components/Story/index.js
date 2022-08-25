@@ -10,4 +10,4 @@ const Story = ({ name, content, imageUrl }) => {
   );
 };
 
-export default Story;
+export { Story };

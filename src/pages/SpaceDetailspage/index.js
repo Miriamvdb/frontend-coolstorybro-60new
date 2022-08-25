@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Story from "../../components/Story";
+import { Story } from "../../components";
 import { selectSpaceDetails } from "../../store/space/selectors";
 import { fetchSpaceDetails } from "../../store/space/thunks";
 import "./styles.css";
@@ -44,4 +44,4 @@ const SpaceDetailspage = () => {
   );
 };
 
-export default SpaceDetailspage;
+export { SpaceDetailspage };

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SpaceCard from "../../components/SpaceCard";
+import { SpaceCard } from "../../components";
 import { selectAllSpaces } from "../../store/space/selectors";
 import { fetchAllSpaces } from "../../store/space/thunks";
 import "./styles.css";
@@ -13,6 +13,8 @@ const Homepage = () => {
   useEffect(() => {
     dispatch(fetchAllSpaces());
   }, [dispatch]);
+
+  if (!allSpaces) return <div>Loading..</div>;
 
   return (
     <div className="container-homepage">
@@ -34,4 +36,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export { Homepage };

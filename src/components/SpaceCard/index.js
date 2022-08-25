@@ -17,4 +17,4 @@ const SpaceCard = ({ id, title, description, backgroundColor, color }) => {
   );
 };
 
-export default SpaceCard;
+export { SpaceCard };

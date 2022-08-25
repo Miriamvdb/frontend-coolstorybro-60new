@@ -4,9 +4,7 @@ import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/thunks";
 import { Routes, Route } from "react-router-dom";
 import { Navigation, MessageBox } from "./components";
-import { Login, SignUp } from "./pages";
-import Homepage from "./pages/Homepage";
-import SpaceDetailspage from "./pages/SpaceDetailspage";
+import { Homepage, Login, SignUp, SpaceDetailspage } from "./pages";
 
 function App() {
   const dispatch = useDispatch();
