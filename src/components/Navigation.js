@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken, selectUser } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
+import { Link } from "react-router-dom";
+import { MenuItem } from "@mui/material";
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
@@ -26,32 +28,32 @@ export const Navigation = () => {
       <Menu open={open}>
         {token ? (
           <div>
-            <MenuLink href={`/myspace/${userId}`}>My Space</MenuLink>
-            <MenuLink onClick={() => dispatch(logOut())}>Logout</MenuLink>
+            <Link to={`/myspace/${userId}`}>My Space</Link>
+            <MenuItem onClick={() => dispatch(logOut())}>Logout</MenuItem>
           </div>
         ) : (
-          <MenuLink href="/login">Login</MenuLink>
+          <Link to="/login">Login</Link>
         )}
-        <MenuLink href="/leaflet">Empty 1</MenuLink>
-        <MenuLink href="/styled">Empty 2</MenuLink>
+        <Link to="/leaflet">Empty 1</Link>
+        <Link to="/styled">Empty 2</Link>
       </Menu>
     </Nav>
   );
 };
 
-const MenuLink = styled.a`
-  padding: 1rem 2rem;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  color: #ececec;
-  transition: all 0.3s ease-in;
-  font-size: 0.9rem;
+// const MenuLink = styled.a`
+//   padding: 1rem 2rem;
+//   cursor: pointer;
+//   text-align: center;
+//   text-decoration: none;
+//   color: #ececec;
+//   transition: all 0.3s ease-in;
+//   font-size: 0.9rem;
 
-  &:hover {
-    color: #9cc094;
-  }
-`;
+//   &:hover {
+//     color: #9cc094;
+//   }
+// `;
 
 const Nav = styled.div`
   padding: 0 2rem;
