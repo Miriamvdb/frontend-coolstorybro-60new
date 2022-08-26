@@ -19,7 +19,7 @@ export const signUp = (name, email, password) => {
         loginSuccess({
           token: response.data.token,
           user: response.data.user,
-          // mySpace: response.data.mySpace, // F4
+          mySpace: response.data.mySpace, // F4
         })
       );
       dispatch(showMessageWithTimeout("success", true, "account created"));
@@ -111,7 +111,7 @@ export const getUserWithStoredToken = () => {
       // token is still valid
       dispatch(
         tokenStillValid({
-          user: response.data,
+          user: response.data.user,
           mySpace: response.data.mySpace, // F4
         })
       );
