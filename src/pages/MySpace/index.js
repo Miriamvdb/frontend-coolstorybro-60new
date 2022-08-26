@@ -1,11 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectMySpace } from "../../store/user/selectors";
 import { Story } from "../../components/Story";
 import "./styles.css";
+import { deleteStory } from "../../store/user/thunks";
 
 const MySpace = () => {
+  const dispatch = useDispatch();
+
   const mySpace = useSelector(selectMySpace);
-  console.log("mySpace?", mySpace);
+  // console.log("Selected mySpace?", mySpace);
+
+  // Feature 4: Delete story from MySpace
+  const onDelete = (id) => {
+    console.log("Deleting story", id);
+    dispatch(deleteStory(id));
+  };
 
   if (!mySpace) return <div>Loading..</div>;
 
@@ -31,6 +40,14 @@ const MySpace = () => {
               content={story.content}
               imageUrl={story.imageUrl}
             />
+            <button
+              style={{ margin: "1rem" }}
+              onClick={() => {
+                onDelete(story.id);
+              }}
+            >
+              Delete story
+            </button>
           </div>
         );
       })}

@@ -26,9 +26,18 @@ export const userSlice = createSlice({
       state.profile = action.payload.user;
       state.mySpace = action.payload.mySpace; // F4
     },
+
+    // Feature 4: Delete story from MySpace
+    deleteStorySuccess: (state, action) => {
+      const storyId = action.payload;
+      state.mySpace.stories = state.mySpace.stories.filter(
+        (story) => story.id !== storyId
+      );
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid } = userSlice.actions;
+export const { loginSuccess, logOut, tokenStillValid, deleteStorySuccess } =
+  userSlice.actions;
 
 export default userSlice.reducer;
