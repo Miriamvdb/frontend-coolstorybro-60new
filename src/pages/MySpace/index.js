@@ -1,20 +1,39 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchSpaceDetails } from "../../store/space/thunks";
+import { useSelector } from "react-redux";
+import { selectMySpace } from "../../store/user/selectors";
+import { Story } from "../../components/Story";
 import "./styles.css";
 
 const MySpace = () => {
-  const { id } = useParams();
-  const dispatch = useDispatch();
+  const mySpace = useSelector(selectMySpace);
+  console.log("mySpace?", mySpace);
 
-  useEffect(() => {
-    dispatch(fetchSpaceDetails(id));
-  }, [dispatch, id]);
+  if (!mySpace) return <div>Loading..</div>;
 
   return (
     <div className="container-myspace">
-      <h1>My space</h1>
+      <h1>My space: {mySpace.title}</h1>
+      <p>{mySpace.description}</p>
+      <br />
+      <hr />
+      {mySpace.stories.map((story, index) => {
+        return (
+          <div
+            key={index}
+            style={{
+              backgroundColor: mySpace.backgroundColor,
+              color: mySpace.color,
+              width: "50%",
+            }}
+          >
+            <Story
+              id={story.id}
+              name={story.name}
+              content={story.content}
+              imageUrl={story.imageUrl}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };
