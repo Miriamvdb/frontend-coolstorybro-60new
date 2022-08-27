@@ -3,12 +3,12 @@ import { selectMySpace } from "../../store/user/selectors";
 import { Story } from "../../components/Story";
 import "./styles.css";
 import { deleteStory } from "../../store/user/thunks";
+import { PostStoryForm } from "../../components/PostStoryForm";
+import { Button } from "../../styled";
 
 const MySpace = () => {
   const dispatch = useDispatch();
-
   const mySpace = useSelector(selectMySpace);
-  // console.log("Selected mySpace?", mySpace);
 
   // Feature 4: Delete story from MySpace
   const onDelete = (id) => {
@@ -22,8 +22,14 @@ const MySpace = () => {
     <div className="container-myspace">
       <h1>My space: {mySpace.title}</h1>
       <p>{mySpace.description}</p>
-      <br />
+      <span>
+        <Button>EDIT MY SPACE</Button> <Button>POST A NEW STORY BRO</Button>
+      </span>
+
       <hr />
+      <PostStoryForm />
+      <hr />
+
       {mySpace.stories.map((story, index) => {
         return (
           <div
@@ -40,14 +46,14 @@ const MySpace = () => {
               content={story.content}
               imageUrl={story.imageUrl}
             />
-            <button
+            <Button
               style={{ margin: "1rem" }}
               onClick={() => {
                 onDelete(story.id);
               }}
             >
               Delete story
-            </button>
+            </Button>
           </div>
         );
       })}

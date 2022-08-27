@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Button } from "../../styled";
 import "./styles.css";
 
 const SpaceCard = ({ id, title, description, backgroundColor, color }) => {
@@ -11,7 +12,7 @@ const SpaceCard = ({ id, title, description, backgroundColor, color }) => {
       <p>{description}</p>
 
       <NavLink to={`/spaces/${id}`}>
-        <button>Visit Space</button>
+        <Button>Visit Space</Button>
       </NavLink>
     </div>
   );
