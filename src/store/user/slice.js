@@ -40,6 +40,11 @@ export const userSlice = createSlice({
       console.log("From the postNewStorySuccess reducer!", action);
       state.mySpace.stories.push(action.payload);
     },
+
+    // F6: Update my space
+    spaceUpdated: (state, action) => {
+      state.mySpace = { ...action.payload, stories: state.mySpace.stories };
+    },
   },
 });
 
@@ -49,6 +54,7 @@ export const {
   tokenStillValid,
   deleteStorySuccess,
   postNewStorySuccess,
+  spaceUpdated,
 } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -8,6 +8,7 @@ import {
   loginSuccess,
   logOut,
   postNewStorySuccess,
+  spaceUpdated,
   tokenStillValid,
 } from "./slice";
 
@@ -191,6 +192,39 @@ export const postNewStory = (name, content, imageUrl) => {
         showMessageWithTimeout("success", false, response.data.message, 3000)
       );
       dispatch(postNewStorySuccess(response.data.story));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
+
+export const updateMySpace = (title, description, backgroundColor, color) => {
+  return async (dispatch, getState) => {
+    try {
+      const { mySpace, token } = getState().user;
+      dispatch(appLoading());
+
+      const response = await axios.patch(
+        `${apiUrl}/spaces/${mySpace.id}`,
+        {
+          title,
+          description,
+          backgroundColor,
+          color,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+
+      dispatch(
+        showMessageWithTimeout("success", false, "update successfull", 3000)
+      );
+      dispatch(spaceUpdated(response.data.space));
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);

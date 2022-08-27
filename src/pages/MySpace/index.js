@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectMySpace } from "../../store/user/selectors";
-import { Story } from "../../components/Story";
+import { EditSpaceForm, Story } from "../../components";
 import "./styles.css";
 import { deleteStory } from "../../store/user/thunks";
-import { PostStoryForm } from "../../components/PostStoryForm";
+import { PostStoryForm } from "../../components";
 import { Button } from "../../styled";
 
 const MySpace = () => {
@@ -19,16 +19,21 @@ const MySpace = () => {
   if (!mySpace) return <div>Loading..</div>;
 
   return (
-    <div className="container-myspace">
+    <div
+      style={{
+        backgroundColor: mySpace.backgroundColor,
+        color: mySpace.color,
+      }}
+      className="container-myspace"
+    >
       <h1>My space: {mySpace.title}</h1>
       <p>{mySpace.description}</p>
       <span>
         <Button>EDIT MY SPACE</Button> <Button>POST A NEW STORY BRO</Button>
       </span>
 
-      <hr />
+      <EditSpaceForm />
       <PostStoryForm />
-      <hr />
 
       {mySpace.stories.map((story, index) => {
         return (
