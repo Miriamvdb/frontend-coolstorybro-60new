@@ -15,7 +15,6 @@ const PostStoryForm = () => {
   const submitNewStory = (event) => {
     event.preventDefault();
     dispatch(postNewStory(name, content, imageUrl));
-    console.log(name, content, imageUrl);
 
     setName("");
     setContent("");

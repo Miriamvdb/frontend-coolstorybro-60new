@@ -13,7 +13,6 @@ export const Navigation = () => {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const userId = user ? user.id : "";
-  // console.log("userId?", userId);
 
   return (
     <Nav>
@@ -34,8 +33,6 @@ export const Navigation = () => {
         ) : (
           <Link to="/login">Login</Link>
         )}
-        <Link to="/leaflet">Empty 1</Link>
-        <Link to="/styled">Empty 2</Link>
       </Menu>
     </Nav>
   );

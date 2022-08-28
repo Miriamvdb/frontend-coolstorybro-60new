@@ -13,7 +13,6 @@ const MySpace = () => {
 
   // Feature 4: Delete story from MySpace
   const onDelete = (id) => {
-    console.log("Deleting story", id);
     dispatch(deleteStory(id));
   };
 

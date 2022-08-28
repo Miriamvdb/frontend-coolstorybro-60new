@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  allSpaces: null, // K: this should be null
-  spaceDetails: null, // K: this should be null
+  allSpaces: null,
+  spaceDetails: null,
 };
 
 export const spaceSlice = createSlice({
@@ -10,11 +10,9 @@ export const spaceSlice = createSlice({
   initialState,
   reducers: {
     setAllSpaces: (state, action) => {
-      // console.log("From setAllSpaces reducer!", action);
       state.allSpaces = action.payload;
     },
     setSpaceDetails: (state, action) => {
-      console.log("From setSpaceDetails reducer!", action);
       state.spaceDetails = action.payload;
     },
   },

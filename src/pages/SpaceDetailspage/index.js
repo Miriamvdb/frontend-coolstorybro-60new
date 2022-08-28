@@ -10,7 +10,6 @@ const SpaceDetailspage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const spaceDetails = useSelector(selectSpaceDetails);
-  console.log("Selected spaceDetails?", spaceDetails);
 
   useEffect(() => {
     dispatch(fetchSpaceDetails(id));
@@ -22,7 +21,6 @@ const SpaceDetailspage = () => {
   const sortedStories = [...spaceDetails.stories].sort(
     (storyA, storyB) => new Date(storyA.createdAt) - new Date(storyB.createdAt)
   );
-  console.log("Sorted?", sortedStories);
 
   return (
     <div className="container-spacedetailspage">

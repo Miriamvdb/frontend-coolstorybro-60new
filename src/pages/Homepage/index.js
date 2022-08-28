@@ -8,7 +8,6 @@ import "./styles.css";
 const Homepage = () => {
   const dispatch = useDispatch();
   const allSpaces = useSelector(selectAllSpaces);
-  console.log("Selected allSpaces?", allSpaces);
 
   useEffect(() => {
     dispatch(fetchAllSpaces());

@@ -37,7 +37,6 @@ export const userSlice = createSlice({
 
     // F5: Post a new story
     postNewStorySuccess: (state, action) => {
-      console.log("From the postNewStorySuccess reducer!", action);
       state.mySpace.stories.push(action.payload);
     },
 

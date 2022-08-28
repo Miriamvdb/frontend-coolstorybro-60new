@@ -21,7 +21,7 @@ export const fetchSpaceDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch(appLoading());
     const response = await axios.get(`${apiUrl}/spaces/${id}`);
-    console.log("Response space details with stories", response.data);
+    // console.log("Response space details with stories", response.data);
     dispatch(setSpaceDetails(response.data));
     dispatch(appDoneLoading());
   } catch (e) {

@@ -170,7 +170,7 @@ export const postNewStory = (name, content, imageUrl) => {
   return async (dispatch, getState) => {
     try {
       const { mySpace, token } = getState().user;
-      console.log(name, content, imageUrl);
+      // console.log(name, content, imageUrl);
       dispatch(appLoading());
 
       const response = await axios.post(
@@ -187,7 +187,7 @@ export const postNewStory = (name, content, imageUrl) => {
         }
       );
 
-      console.log("Response postNewStory", response);
+      // console.log("Response postNewStory", response);
       dispatch(
         showMessageWithTimeout("success", false, response.data.message, 3000)
       );
