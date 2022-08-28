@@ -23,7 +23,7 @@ const EditSpaceForm = () => {
 
   return (
     <div>
-      <h3>Edit space FORM</h3>
+      <h3>Edit space: </h3>
       <form onSubmit={submitEditedSpace}>
         <p>
           <Input

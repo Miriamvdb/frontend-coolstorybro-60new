@@ -5,6 +5,7 @@ import "./styles.css";
 import { deleteStory } from "../../store/user/thunks";
 import { PostStoryForm } from "../../components";
 import { Button } from "../../styled";
+import { useState } from "react";
 
 const MySpace = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,10 @@ const MySpace = () => {
     console.log("Deleting story", id);
     dispatch(deleteStory(id));
   };
+
+  // F5 & F6: Display or hide the forms
+  const [showEditSpace, setShowEditSpace] = useState(false);
+  const [showPostNewStory, setShowPostNewStory] = useState(false);
 
   if (!mySpace) return <div>Loading..</div>;
 
@@ -29,11 +34,17 @@ const MySpace = () => {
       <h1>My space: {mySpace.title}</h1>
       <p>{mySpace.description}</p>
       <span>
-        <Button>EDIT MY SPACE</Button> <Button>POST A NEW STORY BRO</Button>
+        <Button onClick={() => setShowEditSpace(!showEditSpace)}>
+          {showEditSpace ? "Close" : "EDIT MY SPACE!"}
+        </Button>
+
+        <Button onClick={() => setShowPostNewStory(!showPostNewStory)}>
+          {showPostNewStory ? "Close" : "POST A NEW STORY BRO!"}
+        </Button>
       </span>
 
-      <EditSpaceForm />
-      <PostStoryForm />
+      {showEditSpace && <EditSpaceForm />}
+      {showPostNewStory && <PostStoryForm />}
 
       {mySpace.stories.map((story, index) => {
         return (

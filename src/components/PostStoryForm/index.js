@@ -16,11 +16,14 @@ const PostStoryForm = () => {
     event.preventDefault();
     dispatch(postNewStory(name, content, imageUrl));
     console.log(name, content, imageUrl);
+
+    setName("");
+    setContent("");
   };
 
   return (
-    <div className="container-poststoryform">
-      <h3>Post a cool story FORM</h3>
+    <div>
+      <h3>Post a cool story:</h3>
       <form onSubmit={submitNewStory}>
         <p>
           <Input
